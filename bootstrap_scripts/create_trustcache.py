@@ -31,17 +31,17 @@ def create_tc(hashes):
             continue
 
         assert(len(hash_txt) >= 40)
-
-        hash_txt = hash_txt[:40]
-
+        
+        cdhash = bytes.fromhex(hash_txt.decode('ascii'))[:20]
         #write the hash itself
-        for i in range(5):
-            four_bytes = hash_txt[i * 8 : (i + 1) * 8]
-            number = int(four_bytes, 16)
-            tc += struct.pack(">I", number)
+        tc += cdhash
+        # for i in range(5):
+        #     four_bytes = hash_txt[i * 8 : (i + 1) * 8]
+        #     number = int(four_bytes, 16)
+        #     tc += struct.pack(">I", number)
 
         #hash type
-        tc += struct.pack("B", 0)
+        tc += struct.pack("B", 2)
         #hash flags
         tc += struct.pack("B", 0)
     return tc

@@ -19,7 +19,6 @@ struct trust_cache_module1 {
 	struct trust_cache_entry1 entries[];
 } __attribute__((__packed__));
 '''
-data = data[8:]
 print("version: ", struct.unpack("<I",data[0:4])[0])
 print("uuid: ", data[4:20].hex())
 

@@ -7,12 +7,6 @@ import urllib
 def create_tc(hashes):
     tc = b""
 
-    #number of trustcaches in the trust cache buffer
-    tc += struct.pack("<I", 1)
-
-    #offset within the buffer for the first trust cache
-    tc += struct.pack("<I", 8)
-
     #write the header
     #version
     tc += struct.pack("<I", 1)

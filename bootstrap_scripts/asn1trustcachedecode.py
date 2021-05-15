@@ -12,7 +12,7 @@ def decode(data):
         if "IM4P" != str(decoded[0][0]):
             print ("failed: unexpected element: " + str(decoded[0][0]))
             return ""
-        if "rtsc" != str(decoded[0][1]):
+        if "rtsc" != str(decoded[0][1]) and "trst" != str(decoded[0][1]):
             print ("failed: unexpected element: " + str(decoded[0][1]))
             return ""
         return (decoded[0][3])

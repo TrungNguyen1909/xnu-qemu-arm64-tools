@@ -19,21 +19,21 @@ struct trust_cache_module1 {
 	struct trust_cache_entry1 entries[];
 } __attribute__((__packed__));
 '''
-print("version: ", struct.unpack("<I",data[0:4])[0])
-print("uuid: ", data[4:20].hex())
+print("version:", struct.unpack("<I",data[0:4])[0])
+print("uuid:", data[4:20].hex())
 
 num_entries = struct.unpack("<I", data[20:24])[0]
 
-print("num_entries: ", num_entries)
+print("num_entries:", num_entries)
 data = data[24:]
 for i in range(num_entries):
-    print("entry ", i,":")
+    print(F"entry {i}:")
     cdhash = data[:20]
     hash_type = struct.unpack("B", data[20:21])[0]
     flags = struct.unpack("B", data[21:22])[0]
-    print("\tcdhash: ", cdhash.hex())
-    print("\thash_type: ", hash_type)
-    print("\tflags: ", flags)
+    print("\tcdhash:", cdhash.hex())
+    print("\thash_type:", hash_type)
+    print("\tflags:", flags)
     data = data[22:]
     # if len(data) <=0:
     #     break
